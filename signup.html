@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Closet | Apefa's Closet</title>
+    
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        body { background-color: #fdfaf7; color: #333; overflow-x: hidden; }
+
+        /* Split Screen Layout */
+        .auth-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Side: Brand Experience */
+        .auth-visual {
+            flex: 1;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('/img/mission.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px;
+            color: #fff;
+        }
+
+        .auth-visual .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .visual-content h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            max-width: 400px;
+        }
+
+        /* Right Side: Form Area */
+        .auth-form-side {
+            flex: 1;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 10%;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-wrapper h1 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .form-wrapper p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        /* Floating Label Inputs */
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            background: transparent;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            font-size: 0.8rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        /* Floating Label Animation */
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.65rem;
+            color: #b5835a;
+        }
+
+        .form-group input:focus {
+            border-bottom-color: #b5835a;
+        }
+
+        /* Submit Button */
+        .btn-signup {
+            width: 100%;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .btn-signup:hover {
+            background: #b5835a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .login-footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+
+        .login-footer a {
+            color: #b5835a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .auth-visual { display: none; }
+            .auth-form-side { flex: 1; padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <!-- Visual Panel -->
+        <div class="auth-visual">
+            <a href="index.html" class="logo">Apefa's Closet</a>
+            <div class="visual-content">
+                <h2>Begin your journey into <em>intentional</em> style.</h2>
+            </div>
+            <div class="visual-footer">
+                <p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7;">&copy; 2026 COLLECTION</p>
+            </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="auth-form-side">
+            <div class="form-wrapper">
+                <h1>Create Account</h1>
+                <p>Join our community for early access to the 2026 Edit.</p>
+
+                <form action="index.html" method="get">
+                    <div class="form-group">
+                        <input type="text" id="fullname" placeholder=" " required>
+                        <label for="fullname">Full Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder=" " required>
+                        <label for="email">Email Address</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder=" " required>
+                        <label for="password">Create Password</label>
+                    </div>
+
+                    <div style="margin-bottom: 20px; font-size: 0.75rem; color: #999;">
+                        <input type="checkbox" id="newsletter" checked>
+                        <label for="newsletter" style="text-transform: none; letter-spacing: normal; position: static; color: #888;">
+                            Notify me about limited batch releases.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-signup">Create Profile</button>
+                </form>
+
+                <div class="login-footer">
+                    Already a member? <a href="login.html">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+    <script>
+    (function(){
+        const form = document.querySelector('.form-wrapper form');
+        if(!form) return;
+        const nameEl = form.querySelector('#fullname');
+        const emailEl = form.querySelector('#email');
+        const pwdEl = form.querySelector('#password');
+        const newsletter = form.querySelector('#newsletter');
+        const submitBtn = form.querySelector('.btn-signup');
+
+        // Feedback area
+        const fb = document.createElement('div'); fb.style.marginTop = '12px'; fb.style.fontSize = '0.95rem'; form.appendChild(fb);
+
+        // Password show/hide
+        const toggle = document.createElement('button'); toggle.type = 'button'; toggle.textContent = 'Show';
+        Object.assign(toggle.style, { marginLeft: '10px', padding: '6px 10px', cursor: 'pointer', background: '#eee', border: 'none', borderRadius: '4px' });
+        pwdEl.parentNode.appendChild(toggle);
+        toggle.addEventListener('click', ()=>{ if(pwdEl.type==='password'){ pwdEl.type='text'; toggle.textContent='Hide'; } else { pwdEl.type='password'; toggle.textContent='Show'; } });
+
+        // Password strength
+        const meter = document.createElement('div'); meter.style.height = '8px'; meter.style.marginTop = '8px'; meter.style.borderRadius = '4px'; meter.style.background = '#eee'; form.insertBefore(meter, submitBtn);
+        function strengthScore(p){ let s=0; if(p.length>=8) s++; if(/[A-Z]/.test(p)) s++; if(/[0-9]/.test(p)) s++; if(/[^A-Za-z0-9]/.test(p)) s++; return s; }
+        function updateMeter(){ const s = strengthScore(pwdEl.value||''); const pct = (s/4)*100; meter.style.background = s<=1 ? '#ffb3b3' : s===2 ? '#ffd699' : s===3 ? '#cfe9b4' : '#a8e6a1'; meter.style.width = pct + '%'; }
+        pwdEl.addEventListener('input', updateMeter);
+
+        function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+        // Load saved draft (name/email/newsletter)
+        try{
+            const raw = localStorage.getItem('apefa_signup_draft_v1');
+            if(raw){ const d = JSON.parse(raw); if(d.name) nameEl.value=d.name; if(d.email) emailEl.value=d.email; if(typeof d.newsletter==='boolean') newsletter.checked = d.newsletter; }
+        }catch(e){}
+        [nameEl,emailEl,newsletter].forEach(el=>el && el.addEventListener('input', ()=>{ try{ localStorage.setItem('apefa_signup_draft_v1', JSON.stringify({ name: nameEl.value, email: emailEl.value, newsletter: newsletter.checked })); }catch(e){} }));
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault(); fb.textContent='';
+            const name = (nameEl.value||'').trim(); const email = (emailEl.value||'').trim(); const pwd = pwdEl.value||'';
+            if(!name){ fb.textContent='Please enter your full name.'; fb.style.color='#ffdddd'; nameEl.focus(); return; }
+            if(!validEmail(email)){ fb.textContent='Please enter a valid email address.'; fb.style.color='#ffdddd'; emailEl.focus(); return; }
+            if(strengthScore(pwd) < 2){ fb.textContent='Please choose a stronger password (8+ chars, mix letters/numbers).'; fb.style.color='#ffdddd'; pwdEl.focus(); return; }
+
+            // Simulate signup
+            submitBtn.disabled = true; const orig = submitBtn.textContent; submitBtn.textContent = 'Creating...'; fb.textContent = 'Creating your profile…'; fb.style.color = '#dff0d8';
+            setTimeout(()=>{
+                submitBtn.disabled = false; submitBtn.textContent = orig; fb.textContent = 'Welcome — your account is ready.'; fb.style.color = '#dff0d8';
+                try{ localStorage.removeItem('apefa_signup_draft_v1'); localStorage.setItem('apefa_user_v1', JSON.stringify({ name, email })); }catch(e){}
+                // Redirect to action
+                window.location.href = form.getAttribute('action') || 'index.html';
+            }, 900);
+        });
+
+    })();
+    </script>

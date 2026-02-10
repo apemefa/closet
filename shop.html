@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | Apefa's Closet</title>
+    
+    <style>
+        * { margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+        body { 
+            background-color: #fdfaf7; 
+            color: #333; 
+            line-height: 1.6; 
+        }
+
+        a {
+            text-decoration: none;
+        }
+        
+        /* Navigation (Same as Home) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: #fff; 
+            position: sticky; 
+            top: 0; z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            color: #b5835a;
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+        }
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #555; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { 
+            color: #b5835a; 
+        }
+
+        /* Shop Header */
+        .shop-header {
+            padding: 60px 5% 20px;
+            text-align: center;
+            background: #fff;
+        }
+        .shop-header h1 { 
+            font-size: 2.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin-bottom: 10px; 
+        }
+        .breadcrumb { 
+            font-size: 0.8rem; 
+            color: #888; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        /* Shop Layout */
+        .shop-container {
+            display: flex;
+            padding: 40px 5%;
+            gap: 40px;
+        }
+
+        /* Sidebar Filters */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+        .filter-group { 
+            margin-bottom: 40px; 
+        }
+        .filter-group h4 { 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .filter-group ul { 
+            list-style: none; 
+        }
+        .filter-group ul li { 
+            margin-bottom: 8px; 
+        }
+        .filter-group ul li a { 
+            text-decoration: none; 
+            color: #666; 
+            font-size: 0.9rem; 
+            transition: 0.2s;
+        }
+        .filter-group ul li a:hover { 
+            color: #b5835a; 
+        }
+
+        /* Main Shop Area */
+        .shop-main { 
+            flex-grow: 1; 
+        }
+
+        /* Sorting Bar */
+        .shop-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+        .sort-select {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 10px;
+            transition: 0.4s;
+            position: relative;
+        }
+        .product-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 { 
+            font-size: 0.9rem; 
+            margin-bottom: 5px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        .price { 
+            color: #b5835a; 
+            font-weight: bold; 
+            font-size: 1rem; 
+        }
+
+        .tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer (Same as Home) */
+        footer {
+            background-color: #1a1a1a;
+            color: #fdfaf7;
+            padding: 80px 10% 40px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column { 
+            flex: 1; 
+            min-width: 220px; 
+        }
+        .footer-column h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            color: #b5835a;
+        }
+
+        .footer-column ul { 
+            list-style: none; 
+        }
+        .footer-column ul li { 
+            margin-bottom: 12px; 
+        }
+        .footer-column ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .footer-column ul li a:hover { 
+            color: #fff; 
+            padding-left: 5px; 
+        }
+
+        .newsletter-form { 
+            display: flex; 
+            margin-top: 20px; 
+        }
+        .newsletter-form input {
+            padding: 12px;
+            border: 1px solid #333;
+            background: #222;
+            color: #fff;
+            flex: 1;
+            outline: none;
+        }
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: #b5835a;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .about-section { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .about-image img { 
+                height: 400px; 
+                box-shadow: none; 
+            }
+            .hero-content h1 { 
+                font-size: 2.2rem; 
+            }
+            .nav-links { 
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="logo" href="index.html">Apefa's Closet</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html" style="color: #b5835a;">Explore</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Account</a></li>
+            <li><a href="cart.html">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <header class="shop-header">
+        <p class="breadcrumb">Home / Shop / All Collections</p>
+        <h1>All Collections</h1>
+    </header>
+
+    <div class="shop-container">
+        <!-- Filtering Sidebar -->
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Dresses</a></li>
+                    <li><a href="#">Outerwear</a></li>
+                    <li><a href="#">Knitwear</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <h4>Color Palette</h4>
+                <ul>
+                    <li><a href="#">Ecru & Cream</a></li>
+                    <li><a href="#">Earth Umber</a></li>
+                    <li><a href="#">Midnight Silk</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <main class="shop-main">
+            <div class="shop-toolbar">
+                <p>Showing 1–12 of 34 results</p>
+                <select class="sort-select">
+                    <option>Sort By: Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <span class="tag">New In</span>
+                    <img src="/img/Silk Lumina Dress.jpg" alt="Silk Dress">
+                    <h3>Silk Lumina Dress</h3>
+                    <p class="price">$240.00</p>
+                    <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="/img/Ember Wool Coat.jpg" alt="Wool Coat">
+                    <h3>Ember Wool Coat</h3>
+                    <p class="price">$310.00</p>
+                    <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="/img/Linen Sunday Shirt.jpg" alt="Shirt">
+                    <h3>Linen Sunday Shirt</h3>
+                    <p class="price">$120.00</p>
+                    <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <span class="tag">Limited</span>
+                    <img src="/img/High-Waist Pleated Pant.jpg" alt="Trousers">
+                    <h3>High-Waist Pleated Pant</h3>
+                    <p class="price">$185.00</p>
+                    <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <img src="/img/Oversized Cashmere Knit.jpg" alt="Sweater">
+                    <h3>Oversized Cashmere Knit</h3>
+                    <p class="price">$290.00</p>
+                   <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <img src="/img/Minimalist Wrap Blouse.jpg" alt="Blouse">
+                    <h3>Minimalist Wrap Blouse</h3>
+                    <p class="price">$145.00</p>
+                    <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Apefa's Closet</h4>
+                <p style="font-size: 0.85rem; color: #999;">Curating intentional fashion for the modern minimalist. Our 2026 collection is inspired by global travels and timeless silhouettes.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.8rem; color: #999;">Subscribe for early access to new drops from the closet.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 APEFA'S CLOSET. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
+
+   

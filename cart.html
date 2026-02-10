@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Selection | Apefa's Closet</title>
+    
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+        body { 
+            background-color: #fdfaf7; 
+            color: #333; 
+            line-height: 1.6; 
+        }
+
+        /* Navigation */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: #fff; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            text-decoration: none; 
+            color: #333; 
+        }
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #555; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { 
+            color: #b5835a; 
+        }
+
+        /* Cart Page Layout */
+        .cart-wrapper {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 60px;
+        }
+
+        .cart-header { 
+            grid-column: 1 / -1; 
+            margin-bottom: 20px; 
+        }
+        .cart-header h1 { 
+            font-size: 2rem; 
+            font-weight: 300; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+        }
+        .cart-header p { 
+            font-size: 0.9rem; 
+            color: #888; 
+        }
+
+        /* Cart Items List */
+        .cart-items { 
+            border-top: 1px solid #eee; 
+        }
+        
+        .cart-item {
+            display: flex;
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+            gap: 25px;
+        }
+
+        .item-image { 
+            width: 140px; 
+            height: 180px; 
+            background: #eee; 
+            overflow: hidden; 
+        }
+        .item-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        .item-details { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .item-info h3 { 
+            font-size: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 5px; 
+        }
+        .item-info p { 
+            font-size: 0.85rem; 
+            color: #888; 
+        }
+
+        .item-controls { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+        }
+        
+        /* Modern Quantity Selector */
+        .qty-picker { 
+            display: flex; 
+            align-items: center; 
+            border: 1px solid #ddd; 
+            padding: 5px 15px; 
+            gap: 15px; 
+            font-size: 0.9rem; 
+        }
+        .qty-btn { 
+            cursor: pointer; 
+            color: #888; 
+            transition: 0.2s; 
+        }
+        .qty-btn:hover { color: #333; }
+
+        .remove-link { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #888; 
+            text-decoration: none; 
+            border-bottom: 1px solid transparent; 
+            transition: 0.3s; 
+        }
+        .remove-link:hover { 
+            color: #333; 
+            border-color: #333; 
+        }
+
+        /* Summary Sidebar */
+        .cart-summary {
+            background: #fff;
+            padding: 40px;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .summary-title { 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 15px; 
+        }
+        
+        .summary-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 15px; 
+            font-size: 0.95rem; }
+        .total-row { 
+            border-top: 1px solid #eee; 
+            margin-top: 20px; 
+            padding-top: 20px; 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+        }
+
+        .gift-section { 
+            margin-top: 30px; 
+        }
+        .gift-section label { 
+            display: block; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #888; 
+            margin-bottom: 10px; 
+        }
+        .gift-section textarea { 
+            width: 100%; 
+            border: 1px solid #eee; 
+            padding: 15px; 
+            font-size: 0.85rem; 
+            outline: none; 
+            background: #fafafa; 
+            transition: 0.3s; 
+        }
+        .gift-section textarea:focus { border-color: #b5835a; }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            margin-top: 40px;
+            transition: 0.4s;
+        }
+        .checkout-btn:hover { background: #b5835a; transform: translateY(-3px); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .cart-wrapper { grid-template-columns: 1fr; }
+            .cart-summary { position: static; margin-top: 40px; }
+            .item-image { width: 100px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Apefa's Closet</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Explore</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Account</a></li>
+            <li><a href="cart.html" style="color: #b5835a;">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <main class="cart-wrapper">
+        <header class="cart-header">
+            <h1>Your Selection</h1>
+            <p>Collection — High Quality Sustainable Goods</p>
+        </header>
+
+        <section class="cart-items">
+            <!-- Item 1 -->
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="/img/Silk Lumina Dress.jpg" alt="Silk Dress">
+                </div>
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>Silk Lumina Dress</h3>
+                        <p>Size: Medium / Color: Earth Umber</p>
+                        <p style="margin-top: 10px; color: #333; font-weight: bold;">$240.00</p>
+                    </div>
+                    <div class="item-controls">
+                        <div class="qty-picker">
+                            <span class="qty-btn">—</span>
+                            <span>1</span>
+                            <span class="qty-btn">+</span>
+                        </div>
+                        <a href="#" class="remove-link">Remove</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="/img/Ember Wool Coat.jpg" alt="Wool Coat">
+                </div>
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>Ember Wool Coat</h3>
+                        <p>Size: Large / Color: Charcoal</p>
+                        <p style="margin-top: 10px; color: #333; font-weight: bold;">$310.00</p>
+                    </div>
+                    <div class="item-controls">
+                        <div class="qty-picker">
+                            <span class="qty-btn">—</span>
+                            <span>1</span>
+                            <span class="qty-btn">+</span>
+                        </div>
+                        <a href="#" class="remove-link">Remove</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Sidebar -->
+        <aside class="cart-summary">
+            <h2 class="summary-title">Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$550.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span style="color: #b5835a; font-size: 0.8rem;">Calculated at next step</span>
+            </div>
+            
+            <div class="gift-section">
+                <label>Add a personal note</label>
+                <textarea rows="3" placeholder="Writing a note for someone special?"></textarea>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Total</span>
+                <span>$550.00</span>
+            </div>
+
+            <a href="#" class="checkout-btn">Secure Checkout</a>
+            
+            <p style="margin-top: 25px; font-size: 0.75rem; text-align: center; color: #999;">
+                Complimentary returns within 30 days for 2026 members.
+            </p>
+        </aside>
+    </main>
+
+    <footer style="background-color: #1a1a1a; color: #fdfaf7; padding: 40px 10%; text-align: center; font-size: 0.7rem; letter-spacing: 2px;">
+        &copy; 2026 APEFA'S CLOSET. <br><br>
+        <span style="opacity: 0.5;">Secured with 256-bit encryption.</span>
+    </footer>
+
+    <script>
+    (function(){
+        const CART_KEY = 'apefa_cart_count_v1';
+        const CART_STARTED = 'apefa_cart_started_v1';
+        // If the user hasn't started a cart this session, show an empty cart state
+        try{
+            const started = sessionStorage.getItem(CART_STARTED) === '1';
+            const navLink = document.querySelector('nav .nav-links a[href="cart.html"]');
+            if(!started){
+                // replace items with an empty message
+                const itemsSection = document.querySelector('.cart-items');
+                if(itemsSection){
+                    itemsSection.innerHTML = '<p style="padding:40px 0; color:#666; text-align:center;">Your cart is empty. Add items from the shop to get started.</p>';
+                }
+                // set totals to $0.00
+                const subtotalSpan = document.querySelector('.summary-row')?.querySelectorAll('span')[1];
+                const totalSpan = document.querySelector('.summary-row.total-row')?.querySelectorAll('span')[1];
+                if(subtotalSpan) subtotalSpan.textContent = '$0.00';
+                if(totalSpan) totalSpan.textContent = '$0.00';
+                // update nav
+                if(navLink) { navLink.textContent = 'Cart (0)'; navLink.style.color = '#555'; }
+                // disable checkout
+                const checkout = document.querySelector('.checkout-btn'); if(checkout) checkout.style.pointerEvents = 'none', checkout.style.opacity = '0.6';
+                return; // skip normal cart wiring
+            } else {
+                // if started, update nav from storage
+                const stored = parseInt(localStorage.getItem(CART_KEY)) || 0; if(navLink) { navLink.textContent = `Cart (${stored})`; navLink.style.color = stored ? '#b5835a' : '#555'; }
+            }
+        }catch(e){}
+        function parsePrice(text){ return parseFloat((text||'').replace(/[^0-9.-]+/g,'')) || 0; }
+        function formatPrice(n){ return '$' + n.toFixed(2); }
+
+        const subtotalRow = document.querySelectorAll('.summary-row')[0];
+        const subtotalSpan = subtotalRow ? subtotalRow.querySelectorAll('span')[1] : null;
+        const totalSpan = document.querySelector('.summary-row.total-row')?.querySelectorAll('span')[1] || null;
+        const navCartLink = document.querySelector('nav .nav-links a[href="cart.html"]');
+
+        function cartItems(){ return Array.from(document.querySelectorAll('.cart-item')); }
+
+        function updateNavCount(){
+            const count = cartItems().length;
+            if(navCartLink){ navCartLink.textContent = `Cart (${count})`; navCartLink.style.color = count ? '#b5835a' : '#555'; }
+        }
+
+        function updateTotals(){
+            const items = cartItems();
+            let subtotal = 0;
+            items.forEach(item => {
+                const priceEl = item.querySelector('.item-info p:last-of-type');
+                const price = parsePrice(priceEl ? priceEl.textContent : '0');
+                const qtySpan = item.querySelector('.qty-picker span:nth-child(2)');
+                const qty = parseInt(qtySpan?.textContent) || 1;
+                subtotal += price * qty;
+            });
+            if(subtotalSpan) subtotalSpan.textContent = formatPrice(subtotal);
+            if(totalSpan) totalSpan.textContent = formatPrice(subtotal);
+            updateNavCount();
+        }
+
+        function hookItem(item){
+            const btns = item.querySelectorAll('.qty-picker .qty-btn');
+            const minus = btns[0];
+            const plus = btns[1];
+            const qtySpan = item.querySelector('.qty-picker span:nth-child(2)');
+            const remove = item.querySelector('.remove-link');
+
+            if(minus){ minus.addEventListener('click', e => { e.preventDefault(); let q = parseInt(qtySpan.textContent)||1; if(q>1){ q--; qtySpan.textContent = q; updateTotals(); } }); }
+            if(plus){ plus.addEventListener('click', e => { e.preventDefault(); let q = parseInt(qtySpan.textContent)||1; q++; qtySpan.textContent = q; updateTotals(); }); }
+            if(remove){ remove.addEventListener('click', e => { e.preventDefault(); item.remove(); updateTotals(); }); }
+        }
+
+        // Initialize
+        document.querySelectorAll('.cart-item').forEach(hookItem);
+        updateTotals();
+
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Apefa's Closet</title>
+    <style>
+        * { margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+
+        a {
+            text-decoration: none;
+        }
+        
+        body { 
+        background-color: #fdfaf7; 
+        color: #333; 
+        line-height: 1.8; 
+        }
+
+        /* Navigation */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: #fff; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            text-decoration: none; 
+            color: #b5835a; 
+        }
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #555; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { 
+            color: #b5835a; 
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: #fff;
+        }
+        .contact-hero h1 { 
+            font-size: 3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-weight: 300; 
+        }
+        .contact-hero p { 
+            color: #888; 
+            font-size: 1rem; 
+            max-width: 600px; 
+            margin: 20px auto; 
+        }
+
+        /* Main Contact Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            padding: 80px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Side Info */
+        .contact-info h2 { 
+            font-size: 1.8rem; 
+            margin-bottom: 30px; 
+            font-weight: 400; 
+        }
+        .info-block { 
+            margin-bottom: 40px; 
+        }
+        .info-label { 
+            display: block; 
+            color: #b5835a; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+        .info-text { 
+            font-size: 1.1rem; 
+            color: #444; 
+        }
+        .info-text a { 
+            color: #333; 
+            text-decoration: none; 
+            border-bottom: 1px solid #ddd; 
+            transition: 0.3s; 
+        }
+        .info-text a:hover { 
+            border-color: #b5835a; 
+            color: #b5835a; 
+        }
+
+        /* Elegant Form */
+        .contact-form { 
+            background: #fff; 
+            padding: 60px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.02); 
+        }
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            margin-bottom: 30px; 
+        }
+        .form-group { 
+            position: relative; 
+            margin-bottom: 40px; 
+        }
+        
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            font-size: 0.8rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus { border-bottom-color: #b5835a; }
+        .form-group input:focus + label, .form-group input:not(:placeholder-shown) + label,
+        .form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label {
+            top: -20px;
+            font-size: 0.65rem;
+            color: #b5835a;
+        }
+
+        .submit-btn {
+            background: #333;
+            color: white;
+            padding: 20px 60px;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.4s;
+            width: 100%;
+        }
+        .submit-btn:hover { 
+            background: #b5835a; 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(181, 131, 90, 0.2); 
+        }
+
+        /* Consultation CTA */
+        .consult-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 100px 10%;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .consult-cta h2 { 
+            font-size: 2.2rem; 
+            margin-bottom: 20px; 
+            font-weight: 300; 
+        }
+        .consult-btn { 
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .consult-btn:hover { background: #fff; color: #1a1a1a; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 60px; padding: 60px 5%; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Apefa's Closet</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Explore</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" style="color: #b5835a;">Contact</a></li>
+            <li><a href="login.html">Account</a></li>
+            <li><a href="cart.html">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <header class="contact-hero">
+        <p class="breadcrumb">Get in Touch</p>
+        <h1>Connect With Us</h1>
+        <p>Whether you seek styling advice, have a question about our 2026 Edit, or simply wish to share a story, our team is here to listen.</p>
+    </header>
+
+    <main class="contact-grid">
+        <section class="contact-info">
+            <h2>Our Studio</h2>
+            
+            <div class="info-block">
+                <span class="info-label">General Inquiries</span>
+                <p class="info-text"><a href="mailto:hello@apefascloset.com">Kamassahbelinda05@ail.com</a></p>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Private Styling</span>
+                <p class="info-text"><a href="mailto:curated@apefascloset.com">Kamassahbelinda05@ail.com</a></p>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Call or Message</span>
+                <p class="info-text">+233 (556) 04 4924</p>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Social Space</span>
+                <p class="info-text"><a href="#">Instagram</a> / <a href="#">Pinterest</a></p>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder=" " required>
+                        <label for="email">Email Address</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="subject" placeholder=" ">
+                    <label for="subject">Subject</label>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" rows="4" placeholder=" " required></textarea>
+                    <label for="message">How can we help?</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <section class="consult-cta">
+        <h2>Complimentary Design Consultation</h2>
+        <p>Ready to transform your routine? Speak with a closet architect to curate your dream space in 2026.</p>
+        <a href="#" class="consult-btn">Book Your Session</a>
+    </section>
+
+    <footer style="background-color: #1a1a1a; color: #fdfaf7; padding: 40px 10%; text-align: center; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #333;">
+        &copy; 2026 APEFA'S CLOSET. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
+
+    <script>
+    (function(){
+        const form = document.querySelector('.contact-form form');
+        if(!form) return;
+        const nameEl = form.querySelector('#name');
+        const emailEl = form.querySelector('#email');
+        const subjectEl = form.querySelector('#subject');
+        const messageEl = form.querySelector('#message');
+        const submitBtn = form.querySelector('.submit-btn');
+
+        // Message area
+        const feedback = document.createElement('div');
+        feedback.style.marginTop = '14px';
+        feedback.style.fontSize = '0.95rem';
+        form.appendChild(feedback);
+
+        function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+        function showFeedback(text, ok){ feedback.textContent = text; feedback.style.color = ok ? '#dff0d8' : '#ffdddd'; }
+
+        // Draft autosave
+        const DRAFT_KEY = 'apefa_contact_draft_v1';
+        function saveDraft(){
+            const d = { name: nameEl.value, email: emailEl.value, subject: subjectEl.value, message: messageEl.value };
+            try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); } catch(e){}
+        }
+        function loadDraft(){
+            try{
+                const raw = localStorage.getItem(DRAFT_KEY); if(!raw) return;
+                const d = JSON.parse(raw);
+                if(d.name) nameEl.value = d.name;
+                if(d.email) emailEl.value = d.email;
+                if(d.subject) subjectEl.value = d.subject;
+                if(d.message) messageEl.value = d.message;
+            }catch(e){}
+        }
+        loadDraft();
+
+        [nameEl,emailEl,subjectEl,messageEl].forEach(el => el && el.addEventListener('input', saveDraft));
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            feedback.textContent = '';
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const message = messageEl.value.trim();
+
+            if(!name){ showFeedback('Please enter your name.', false); nameEl.focus(); return; }
+            if(!email || !validEmail(email)){ showFeedback('Please enter a valid email address.', false); emailEl.focus(); return; }
+            if(!message){ showFeedback('Please enter a message so we can help.', false); messageEl.focus(); return; }
+
+            // Simulate sending
+            submitBtn.disabled = true; const origText = submitBtn.textContent; submitBtn.textContent = 'Sending...';
+            showFeedback('Sending message…', true);
+            setTimeout(()=>{
+                submitBtn.disabled = false; submitBtn.textContent = origText;
+                showFeedback('Thanks — your message has been sent. We will reply within 2 business days.', true);
+                form.reset(); localStorage.removeItem(DRAFT_KEY);
+            }, 900);
+        });
+    })();
+    </script>

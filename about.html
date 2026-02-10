@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Apefa's Closet</title>
+    
+    <style>
+        * { margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+        a {
+            text-decoration: none;
+        }
+        body { background-color: #fdfaf7; color: #333; line-height: 1.8; }
+        
+        /* Navigation */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: #fff; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold;
+            color: #b5835a; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+        }
+        .nav-links { 
+            list-style: none; 
+            display: flex; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #555; 
+            font-size: 0.9rem; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { 
+            color: #b5835a; 
+        }
+
+        /* About Hero */
+        .about-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
+                        url('/img/about\ 1.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        .about-hero h1 { 
+            font-size: 3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 8px; 
+            font-weight: 300;
+        }
+
+        /* Narrative Sections */
+        .narrative {
+            padding: 100px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-split {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 120px;
+        }
+
+        .section-split:nth-child(even) { flex-direction: row-reverse; }
+
+        .content-box { flex: 1; }
+        .image-box { flex: 1; }
+        .image-box img { 
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover; 
+            border: 1px solid #eee;
+        }
+
+        .label {
+            color: #b5835a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 25px; font-weight: 400; line-height: 1.2; }
+        p { color: #666; margin-bottom: 20px; }
+
+        /* Values Grid */
+        .values-section {
+            background: #fff;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .value-card h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .value-card p { font-size: 0.85rem; }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fdfaf7;
+            padding: 80px 10% 40px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column { flex: 1; min-width: 220px; }
+        .footer-column h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            color: #b5835a;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 12px; }
+        .footer-column ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .footer-column ul li a:hover { color: #fff; padding-left: 5px; }
+
+        .newsletter-form { display: flex; margin-top: 20px; }
+        .newsletter-form input {
+            padding: 12px;
+            border: 1px solid #333;
+            background: #222;
+            color: #fff;
+            flex: 1;
+            outline: none;
+        }
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: #b5835a;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .about-section { flex-direction: column; text-align: center; }
+            .about-image img { height: 400px; box-shadow: none; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Apefa's Closet</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Explore</a></li>
+            <li><a href="about.html" style="color: #b5835a;">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Account</a></li>
+            <li><a href="cart.html">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <header class="about-hero">
+        <h1>Our Story</h1>
+    </header>
+
+    <main class="narrative">
+        <!-- Section 1: Philosophy -->
+        <section class="section-split">
+            <div class="content-box">
+                <span class="label">Philosophy</span>
+                <h2>The Art of Intentional Living</h2>
+                <p>Founded on the principle that what we wear should be as meaningful as how we live, Apefa's Closet was born in a small studio with a single sewing machine and a vision for longevity.</p>
+                <p>In 2026, we remain committed to "The Edit"—a curated approach to fashion that rejects the cycle of disposable trends in favor of pieces that age gracefully alongside you.</p>
+            </div>
+            <div class="image-box">
+                <img src="/img/The Art of Intentional Living.jpg" alt="Minimalist Studio">
+            </div>
+        </section>
+
+        <!-- Section 2: Craftsmanship -->
+        <section class="section-split">
+            <div class="content-box">
+                <span class="label">Craftsmanship</span>
+                <h2>Sourced with Integrity</h2>
+                <p>Every textile is hand-selected from heritage mills that prioritize environmental stewardship. From our GOTS-certified organic cotton to our cruelty-free peace silk, we believe transparency is the ultimate luxury.</p>
+                <p>Our 2026 collection features hand-finished seams and natural dyes, ensuring that every garment is unique and biodegradable.</p>
+            </div>
+            <div class="image-box">
+                <img src="/img/Sourced with Integrity.jpg" alt="Textile Close-up">
+            </div>
+        </section>
+    </main>
+
+    <section class="values-section">
+        <span class="label">Our Values</span>
+        <h2>Built for the Future</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h4>Small Batch</h4>
+                <p>We produce in limited quantities to eliminate waste and ensure every item receives individual attention.</p>
+            </div>
+            <div class="value-card">
+                <h4>Fair Equity</h4>
+                <p>Our artisans are paid 30% above industry standards, working in safe, sun-lit environments.</p>
+            </div>
+            <div class="value-card">
+                <h4>Circular Design</h4>
+                <p>We offer a lifetime repair program for all Apefa's Closet pieces to keep them out of landfills.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Apefa's Closet</h4>
+                <p style="font-size: 0.8rem; color: #999;">Crafting a legacy of sustainable elegance for the modern individual.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.75rem; color: #666; margin-bottom: 15px;">Updates on new drops and stories.</p>
+                <div style="display: flex;">
+                    <input type="email" placeholder="Email" style="padding: 10px; background: #222; border: 1px solid #333; color: white; flex: 1;">
+                    <button style="padding: 10px 20px; background: #b5835a; border: none; color: white; cursor: pointer;">Go</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 APEFA'S CLOSET. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+</body>
+</html>
+
+    <script>
+    (function(){
+        // Back to top button
+        const btn = document.createElement('button');
+        btn.textContent = '↑';
+        Object.assign(btn.style, {
+            position: 'fixed', right: '20px', bottom: '20px', width: '44px', height: '44px',
+            borderRadius: '50%', border: 'none', background: '#b5835a', color: '#fff',
+            fontSize: '20px', cursor: 'pointer', boxShadow: '0 6px 18px rgba(0,0,0,0.12)',
+            display: 'none', alignItems: 'center', justifyContent: 'center', zIndex: 9999
+        });
+        document.body.appendChild(btn);
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'flex' : 'none'; });
+
+        // Newsletter validation (footer)
+        const footer = document.querySelector('footer');
+        if(footer){
+            const emailInput = footer.querySelector('input[type="email"]');
+            const goBtn = footer.querySelector('button');
+            if(emailInput && goBtn){
+                const msg = document.createElement('div');
+                msg.style.fontSize = '0.8rem'; msg.style.marginLeft = '10px'; msg.style.color = '#fff';
+                goBtn.parentNode.appendChild(msg);
+                function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+                goBtn.addEventListener('click', (ev)=>{
+                    ev.preventDefault(); const val = emailInput.value.trim();
+                    if(!val || !validEmail(val)){
+                        msg.textContent = 'Please enter a valid email.'; msg.style.color = '#ffdddd';
+                    } else {
+                        msg.textContent = 'Thanks — you are subscribed!'; msg.style.color = '#dff0d8'; emailInput.value = '';
+                    }
+                });
+            }
+        }
+
+        // Reveal on scroll for sections
+        const targets = document.querySelectorAll('.section-split, .values-section');
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(ent => {
+                if(ent.isIntersecting){
+                    ent.target.style.transition = 'opacity 700ms ease, transform 700ms ease';
+                    ent.target.style.opacity = '1';
+                    ent.target.style.transform = 'translateY(0)';
+                    io.unobserve(ent.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        targets.forEach(t => {
+            t.style.opacity = '0'; t.style.transform = 'translateY(20px)';
+            io.observe(t);
+        });
+
+    })();
+    </script>

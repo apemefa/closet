@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apefa's Closet | 2026 Collection</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #fdfaf7;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #b5835a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li { margin-left: 30px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: #b5835a; }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('/img/Contextual\ Commerce.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 5px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: #fff;
+        }
+
+        .about-content { 
+            flex: 1; 
+        }
+
+        .about-content h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 20px; 
+            color: #222; 
+        }
+
+        .about-image { 
+            flex: 1; 
+        }
+
+        .about-image img { 
+            width: 100%; 
+            height: 550px; 
+            object-fit: cover; 
+            box-shadow: 20px 20px 0 #fdfaf7;
+            border: 1px solid #eee;
+        }
+
+        /* Product Section */
+        .products { 
+            padding: 100px 5%; 
+            text-align: center; 
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 15px;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: left;
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover { 
+            transform: translateY(-10px); 
+            border-color: #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 { 
+            font-size: 1rem; 
+            margin-bottom: 5px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        .price { 
+            color: #b5835a; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover { 
+            background: #b5835a; 
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fdfaf7;
+            padding: 80px 10% 40px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column { 
+            flex: 1; 
+            min-width: 220px; 
+        }
+
+        .footer-column h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            color: #b5835a;
+        }
+
+        .footer-column ul { 
+            list-style: none; 
+        }
+
+        .footer-column ul li { 
+            margin-bottom: 12px; 
+        }
+
+        .footer-column ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .footer-column ul li a:hover { 
+            color: #fff; 
+            padding-left: 5px; 
+        }
+
+        .newsletter-form { 
+            display: flex; 
+            margin-top: 20px; 
+        }
+
+        .newsletter-form input {
+            padding: 12px;
+            border: 1px solid #333;
+            background: #222;
+            color: #fff;
+            flex: 1;
+            outline: none;
+        }
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: #b5835a;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .about-section { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+
+            .about-image img { 
+                height: 400px; 
+                box-shadow: none; 
+            }
+
+            .hero-content h1 { 
+                font-size: 2.2rem; 
+            }
+            .nav-links { 
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="logo" href="index.html">Apefa's Closet</a>
+        <ul class="nav-links">
+            <li><a href="index.html" style="color: #b5835a;">Home</a></li>
+            <li><a href="shop.html">Explore</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Account</a></li>
+            <li><a href="cart.html">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Contextual Commerce</h1>
+            <p>Curated. Timeless. Yours.</p><br>
+            <a href="shop.html" class="btn">View Collection</a>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="about-image">
+            <img src="/img/mission.jpg" alt="Brand Vision">
+        </div>
+        <div class="about-content">
+            <h2>Our Story</h2>
+            <p>Welcome to <strong>Apefa's Closet</strong>. Since our inception, we have been dedicated to the art of slow fashion. In 2026, we continue to prioritize small-batch production and high-quality textiles.</p>
+            <p>Every piece in the closet tells a story of craftsmanship and conscious living, designed to be cherished for a lifetime rather than a season.</p><br>
+            <a href="about.html" class="btn" style="background: none; color: #333; border: 1px solid #333;">The Manifesto</a>
+        </div>
+    </section>
+
+    <section id="shop" class="products">
+        <h2>Handpicked Favorites</h2>
+        <div class="product-grid">
+            <!-- 1 -->
+            <div class="product-card">
+                <img src="/img/Silk Lumina Dress.jpg" alt="Dress">
+                <h3>Silk Lumina Dress</h3>
+                <p class="price">$240.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+            <!-- 2 -->
+            <div class="product-card">
+                <img src="/img/Ember Wool Coat.jpg" alt="Coat">
+                <h3>Ember Wool Coat</h3>
+                <p class="price">$310.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+            <!-- 3 -->
+            <div class="product-card">
+                <img src="/img/Aura Linen Shirt.jpg" alt="Shirt">
+                <h3>Aura Linen Shirt</h3>
+                <p class="price">$125.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+            <!-- 4 -->
+            <div class="product-card">
+                <img src="/img/Nomad Leather Tote.jpg" alt="Bag">
+                <h3>Nomad Leather Tote</h3>
+                <p class="price">$185.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+            <!-- 5 -->
+            <div class="product-card">
+                <img src="/img/wedding and party dress.jpg" alt="Sweater">
+                <h3>wedding and party dress</h3>
+                <p class="price">$145.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+            <!-- 6 -->
+            <div class="product-card">
+                <img src="/img/Stunning Dress Casual.jpg" alt="Earrings">
+                <h3>Stunning Dress Casual</h3>
+                <p class="price">$85.00</p>
+                <button class="add-cart-btn" onclick="addToCartManual()" style="margin-top: 10px; padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; width: 100%;">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Apefa's Closet</h4>
+                <p style="font-size: 0.85rem; color: #999;">Curating intentional fashion for the modern minimalist. Our 2026 collection is inspired by global travels and timeless silhouettes.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.8rem; color: #999;">Subscribe for early access to new drops from the closet.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 APEFA'S CLOSET. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
